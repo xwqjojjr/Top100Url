@@ -14,7 +14,32 @@
 内存占用分析/保证内存小于1G</br>
 划分阶段，将数据写入到文件后，及时释放内存。
 在读每个小文件并计算Top100阶段，程序每次读入一个文件，同时一致在系统中维护一个大小为100的堆，内存使用不超过题目规定。</br>
+### **测试**</br>
+使用实验室服务器，
+```
+CPU Intel(R) Xeon(R) CPU E5-2620 v3 @ 2.40GHz 12核处理器
+机械硬盘、64GB内存
 
+```
+软件环境为:
+```
+Ubuntu 16.04.5 LTS
+python 2.7.12
+g++ (Ubuntu 5.4.0-6ubuntu1~16.04.11) 5.4.0 20160609
+```
+1. 使用 makeData.py生成数据
+```
+python makeData.py -f data.txt -s 1
+```
+2. 使用devideFile.py切分数据
+```
+python devideFile.py -n 100 -f data.txt
+```
+3. 编译并运行cpp，其中参数100表示文件数量
+```
+g++ -o hashMap hashMap.cpp
+./hashMap 100
+```
 ### **待解决的问题：**</br>
 - [ ] 1. 如何证明结果的正确性？</br>
 在其他平台上跑，对比结果。
